@@ -22,11 +22,17 @@ def fib2(n):
     return res
 
 
-def get_fib_default_parm(default=10):
+# 前面有一條或兩條底線的是 private function, 其他 class import 的時候應該要拿不到這個 function
+def __get_sys_argv():
     sys_argv = sys.argv
     print(f"sys.argv: {sys_argv}")
-    if len(sys_argv) > 1:
-        default = int(sys_argv[1])
+    return sys_argv
+
+
+# 前面有一條或兩條底線的是 private function, 其他 class import 的時候應該要拿不到這個 function
+def _get_fib_default_parm(sysargv, default=10):
+    if len(sysargv) > 1:
+        default = int(sysargv[1])
     return default
 
 
@@ -36,5 +42,6 @@ if __name__ == '__main__':
     print()
 
     # Advanced
-    default_val = get_fib_default_parm(10)
+    sys_argv = __get_sys_argv()
+    default_val = _get_fib_default_parm(sys_argv, 10)
     fib2(default_val)
