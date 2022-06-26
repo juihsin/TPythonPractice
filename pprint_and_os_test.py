@@ -19,7 +19,7 @@ pp(sys.path)
 
 # ==========[Test OS]==========
 print("*" * 80)
-from pprint import pprint as pp
+from pprint import pprint
 import os
 import shutil
 
